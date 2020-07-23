@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+
+{% block content %}
+       
+    <h2>METADATA...</h2>
+
+    <p>
+        <a href="{% url 'upload_xmls' %}" class="btn btn-secondary">UPLOAD XML METADATA</a>
+    </p>
+
+    <table class="table table-striped mb-0">
+        <thead>
+            <tr>
+                <th>MONTH</th>
+                <th>SHOW</th>
+                <th>STUDIO</th>
+                <th>DOWNLOAD</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in csv %}
+            <tr>
+                <td>'Schedule Month' or 'View'</td>
+                <td>'Show Name'</td>
+                <td>'Studio</td>
+                <td>
+                    <a href="#" class="btn btn-info btn-sm" target="_blank">DOWNLOAD</a>
+                </td>
+                <td>
+                    <form method="POST" action="#">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">DELETE</button> 
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {{ csv }}
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+       
+    <h2>UPLOAD METADATA...</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form|crispy }}
+
+        <!-- <div class="container-fluid">
+            <div class="filePicker">
+                <input 
+                    id="filepicker" 
+                    type="file" 
+                    name="xml_list" 
+                    webkitdirectory 
+                    multiple 
+                />
+            </div>
+        </div>
+        <br/> -->
+
+        <button type="submit" class="btn btn-secondary">UPLOAD</button>
+    </form>
+
+{% endblock %}

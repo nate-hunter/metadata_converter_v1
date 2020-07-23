@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    
+    <h1 class="card-title dk-blue-txt">XML to CSV Metadata File Converter</h1>
+    <hr/>
+    <h4 class="card-text home-headers">About:</h4>
+    <p>XMLs aren't the most friendly data format to read.  Scheduling a Library TV season of many episodes can be tedious 
+        - and especially annoying when on a deadline.</p>
+    <p>Metadata in a CSV format is a much more user friendly approach as the metadata is in one file and each cell can be copied and pasted.</p>
+    <p>This program converts selected XMLs into a single CSV file which can be exported, saved, and viewed as a table.</p>
+    <hr/>
+    <h4 class="card-text home-headers">Get Started:</h4>
+    <p class="card-text">
+    Click <a class="orange-txt" href="{% url 'export_metadata' %}">here</a> to simply <b>download</b> a CSV file  
+    or
+    click <a class="orange-txt" href="{% url 'upload_xmls' %}">here</a> to <b>save the csv file, view it as a table, and download it</b>.
+    </p>
+    <p class="card-text">
+    Email <b>Nate Hunter</b> for any questions, comments, or concerns.<br>
+    <a href="mailto:nhunter@indemand.com">nhunter@indemand.com</a>
+    </p>
+{% endblock %} 

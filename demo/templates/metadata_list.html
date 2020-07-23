@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+
+{% block content %}
+       
+    <h1 class="dk-blue-txt">UPLOADED METADATA</h1>
+    <br/>
+    <p>
+        <a href="{% url 'upload_xmls' %}" class="btn btn-secondary">UPLOAD METADATA</a>
+    </p>
+    <br/>
+    <table class="table table-striped mb-0">
+        <thead class="dk-blue-txt">
+            <tr>
+                <th></th>
+                <th>SHOW</th>
+                <th>STUDIO</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for md in metadata %}
+            <tr>
+                <td>
+                    <form method="POST" action="{% url 'show_metadata' md.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-warning btn-sm">VIEW</button> 
+                    </form>
+                </td>
+                <td>{{ md.show }}</td>
+
+                {% if md.studio == 'A&e' %}
+                    <td>{{ md.studio|upper }}</td>
+                {% else %}
+                    <td>{{ md.studio }}</td>
+                {% endif %}
+
+                <td>
+                    <a href="{{ md.csv.url }}" class="btn btn-info btn-sm" target="_blank">DOWNLOAD</a>
+                </td>
+                <td>
+                    <form method="POST" action="{% url 'delete_metadata' md.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">DELETE</button> 
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

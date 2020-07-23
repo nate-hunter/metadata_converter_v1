@@ -1,0 +1,28 @@
+{% load static %}
+
+<nav id="nav" class="navbar navbar-expand-lg navbar-dark mb-4">
+    <div class="container-fluid">
+      <span class="navbar-brand" href="{% url 'home' %}" disabled>
+        <img src="{% static 'images/logo3.png' %}" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+      </span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'upload_xmls' %}">Upload</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'export_metadata' %}">Quick Export</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'metadata_list' %}">Metadata List</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

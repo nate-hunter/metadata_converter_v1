@@ -1,0 +1,66 @@
+#nav {
+	/* background-color:#decdc3; */
+	background-color: rgb(40, 104, 160);
+	/* color: whitesmoke;
+	color: #f99595; */
+
+}
+
+
+
+.navbar-text {
+	color: whitesmoke;
+	color: #f99595;
+}
+
+#input {
+	background-color: #4cb4c7;
+	/* background-color: #ae57ff; */
+	/* font-family: 'Roboto Mono', monospace; */
+}
+
+#output {
+    /* background-color: #7CD1C0; */
+	background-color: rgb(40, 104, 160);
+	/* font-family: 'Roboto Mono', monospace; */
+}
+
+body {
+	/* font-family: 'Lato', sans-serif; */
+	font-family: 'Montserrat', sans-serif;
+	/* font-family: 'Nunito Sans', sans-serif; */
+	/* font-family: 'Roboto Mono', monospace; */
+	/* font-family: 'Nunito Sans', sans-serif; */
+	/* background-color: #ebeff5; */
+	background-color: whitesmoke;
+	/* background-color: #F99595; */
+	/* background-color: #FFD7FF; */
+	/* color: #F99595 */
+    /* color: #f995f9; */
+
+}
+
+.home-headers {
+	color: rgb(40, 104, 160);
+	color: rgb(52, 134, 206);
+}
+
+.link-txt {
+	color: #f99595;
+}
+
+.orange-txt {
+    color: #f99595;
+}
+
+.purple-txt {
+	color: #c412c4;
+}
+
+.dk-blue-txt {
+	color: rgb(40, 104, 160);
+}
+
+.dk-blue-bg {
+	background-color: rgb(40, 104, 160);
+}

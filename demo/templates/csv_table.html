@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+
+{% block content %}
+       
+    <h1 class="purple-txt">{{ name }} (
+        {% if studio == 'A&e' %}
+            <em>{{ studio|upper }}</em>
+        {% else %}
+            <em>{{ studio }}</em>
+        {% endif %}
+        )</h1>
+    <br/>
+    <div class="container-fluid">
+        <div class="row justify-content-between">
+            <div class=" col-3 card" style="background-color: whitesmoke">
+                <div class="card-body">
+                    <h4 class="dk-blue-txt card-text">Episode Count: {{ episode_count }}</h4>
+                </div>
+            </div>
+ 
+            <div class="col col-lg-2">
+                <a href="{{ metadata.csv.url }}" class="btn btn-info btn-lg" target="_blank">DOWNLOAD</a>
+            </div>
+        </div>
+    </div>
+    <br/>
+    
+    <div class="table-responsive">
+        {% if metadata %}
+            <table class="table table-sm table-striped table-bordered table-hover table-dark">
+                <thead>
+                    <tr class="text-warning">
+                        {% for col in columns %}
+                            <th scope="col">{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in rows %}
+                    <tr>
+                        {% for r in row %}
+                            <td scope="row">{{ r }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,1 +1,1 @@
-web: gunicorn django-file-upload.wsgi
+web: gunicorn django_file_demo.wsgi

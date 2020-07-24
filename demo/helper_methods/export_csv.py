@@ -13,7 +13,7 @@ def export_csv(columns, row_data):
     for row in row_data:
         writer.writerow(row)
 
-    response['Content-Disposition'] = 'attachment; filename="_compiled-md_.csv"'
+    response['Content-Disposition'] = 'attachment; filename="_compiledXMLs_.csv"'
 
     return response
 

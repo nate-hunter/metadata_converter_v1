@@ -70,7 +70,7 @@ class FileFieldView(FormView):
 
             csv_file = ContentFile(csv_buffer.getvalue().encode('utf-8'))
 
-            filename= '_compiledXML_' + show + '.csv'
+            filename= '_compiledXMLs_' + show + '.csv'
 
             csv_output.csv.save(filename, csv_file)
 
@@ -102,7 +102,7 @@ class ExportFileView(FormView):
             # EXTRACT COLUMN HEADERS TO SEND TO TEMPLATE:
             columns = write_csv.extract_columns(list_data) 
 
-            # EXTRACT COLUMN ROWS
+            # EXTRACT ROWS
             row_data = write_csv.extract_row_data(list_data)
 
             response = export_csv.export_csv(columns, row_data)

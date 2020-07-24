@@ -20,6 +20,7 @@ urlpatterns = [
 ]
 
 # For Development purposes, not to be used in Production -- why? why not? How to upload file(s) in prodcution?
+#    - Not having any issues so for on Heroku...
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

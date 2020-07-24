@@ -74,7 +74,28 @@ class FileFieldView(FormView):
 
             csv_output.csv.save(filename, csv_file)
 
-            return self.form_valid(form)
+            list_metadata = []
+
+            # Abstract with method here and in `show_metadata()` 
+            with open(csv_output.csv.path, mode='r', encoding="utf8") as csv_file:
+                csv_reader = csv.reader(csv_file, delimiter=',')
+                for row in csv_reader:
+                    list_metadata.append(row)
+
+            columns = list_metadata[0]
+            rows = list_metadata[1:]
+            episode_count = len(rows)
+
+            return render(request, 'csv_table.html', {
+                'metadata': csv_output,
+                'name': show,
+                'columns': columns,
+                'rows': rows,
+                'studio': studio,
+                'episode_count': episode_count
+            })            
+
+            # return self.form_valid(form)
         else:
             return self.form_invalid(form)
  

@@ -36,7 +36,7 @@ class FileFieldView(FormView):
         studio = request.POST['studio']
         show = request.POST['show']
         if form.is_valid():
-            """
+            """ TO DO:
             [1.] Check the studio's value to see which dictionary to create, e.g., 'A&E', 'Discovery', or 'Disney'
             [2.] Based on the studio, create a dictionary of the XML's data
             [3.] Append the dictionary to a list, which will be a 'list of dictionaries -> [{}, {}, {}, ... ]
@@ -76,7 +76,7 @@ class FileFieldView(FormView):
 
             list_metadata = []
 
-            # Abstract with method here and in `show_metadata()` 
+            # Abstract this method and in `show_metadata()` 
             with open(csv_output.csv.path, mode='r', encoding="utf8") as csv_file:
                 csv_reader = csv.reader(csv_file, delimiter=',')
                 for row in csv_reader:
@@ -141,10 +141,15 @@ def show_metadata(request, pk):
         columns = []
         rows = [] 
 
-        with open(metadata.csv.path, mode='r', encoding="utf8") as csv_file:
-            csv_reader = csv.reader(csv_file, delimiter=',')
-            for row in csv_reader:
-                list_metadata.append(row)
+        print('\tMETADATA?-->', metadata)
+
+        try:
+            with open(metadata.csv.path, mode='r', encoding="utf8") as csv_file:
+                csv_reader = csv.reader(csv_file, delimiter=',')
+                for row in csv_reader:
+                    list_metadata.append(row)
+        except:
+            return redirect('error_page')
 
         columns = list_metadata[0]
         rows = list_metadata[1:]
@@ -177,79 +182,6 @@ def delete_metadata(request, pk):
         xml_file.delete()
     return redirect('metadata_list')  
 
-
-# ----------------------------------------------------------------------
-"""TESTING ZONE:"""
-# ----------------------------------------------------------------------
-def upload_metadata(request):
-    """ Uploads a single XML File and saved to the `media` directory. """
-    if request.method == "POST":
-        # data_file = open(file_path , 'r')       
-        # data = data_file.read()
-        form = MetadataForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()     
-            return redirect('metadata_list')
-    else:
-        form = MetadataForm()
-
-    return render(request, 'upload_metadata.html', {
-        'form': form
-    })
-
-
-def upload(request):
-    """Simple upload method. Uploads One file."""
-
-    context = {}
-    if request.method == 'POST':
-        # uploaded_file = request.FILES['document']
-        print('UPLOAD CALLED...\n\t', request.FILES)
-        # print('\tFILE SIZE...', uploaded_file.size)
-
-        # ++++++++
-        # file = os.path.join(directory, filename)
-
-        # fs = FileSystemStorage()
-        # print('\tFILE LOCATION...', fs.location)
-        # print('\tFILE BASE URL...', fs.base_url)
-        # with open(fs.location, 'rb') as f:
-        #     print(f)
-        #     open_xml = f.read()
-
-        # root = etree.fromstring(open_xml)
-
-        # print("ROOT:")
-        # print(root)
-        # print("---------")
-        # ========
-        # name = fs.save(uploaded_file.name, uploaded_file)
-        # context['url'] = fs.url(name)
-    return render(request, 'upload.html', context)
-
-
-def test_xml(request, pk):
-    print(":::::::::::::::::::::::::::::::::::::")
-    if request.method == 'POST':
-        # proj_root = os.path.dirname(__file__)  
-        # print("\tDIRECTORY: ", proj_root)
-        base_dir = settings.BASE_DIR
-        print("\t>>> DIRECTORY: ", base_dir)
-        # file_path = os.path.join(module_dir, 'data.txt')   #full path to text.
-        # data_file = open(file_path , 'r')       
-        # data = data_file.read()
-        # context = {'rooms': data}
-        xml_file = Metadata.objects.get(id=pk)
-        # print(xml_file)
-        xml_file_url = xml_file.xml.name
-        print('\tMEDIA ROOT:', settings.MEDIA_ROOT)
-        file_xml = os.path.join(settings.MEDIA_ROOT, xml_file_url)
-        print("URL---> ", file_xml)
-        # with open(xml_file_url, 'rb') as f:
-        #     print(f)
-        #     open_xml = f.read()
-    return render(request, 'xml-page.html', {
-        'file': xml_file_url
-    })
-
+def error_page(request):
+    return render(request, 'error_page.html')
 

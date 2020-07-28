@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+       
+    <h2 class='text-danger'>OOPs...</h2>
+
+    <p>This file is no longer available for download.</p>
+
+    <a class="btn btn-secondary" href="{% url 'upload_xmls' %}">REUPLOAD</a>
+
+    <a class="btn btn-primary" href="{% url 'metadata_list' %}">RETURN TO LIST</a>
+
+{% endblock %}

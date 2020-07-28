@@ -2,14 +2,26 @@
 
 {% block content %}
        
-    <h1 class="purple-txt">{{ name }} (
-        {% if studio == 'A&e' %}
-            <em>{{ studio|upper }}</em>
-        {% else %}
-            <em>{{ studio }}</em>
-        {% endif %}
-        )</h1>
+
+    <div class="container-fluid">
+        <div class="row justify-content-between">
+            <h1 class="purple-txt">{{ name }} (
+                {% if studio == 'A&e' %}
+                    <em>{{ studio|upper }}</em>
+                {% else %}
+                    <em>{{ studio }}</em>
+                {% endif %}
+            )</h1>
+ 
+            <div class="col col-lg-2">
+                <a href="{% url 'metadata_list' %}" class="btn btn-warning btn-lg">BACK TO LIST</a>
+            </div>
+
+        </div>
+    </div>
     <br/>
+
+
     <div class="container-fluid">
         <div class="row justify-content-between">
             <div class=" col-3 card" style="background-color: whitesmoke">
@@ -21,6 +33,7 @@
             <div class="col col-lg-2">
                 <a href="{{ metadata.csv.url }}" class="btn btn-info btn-lg" target="_blank">DOWNLOAD</a>
             </div>
+
         </div>
     </div>
     <br/>

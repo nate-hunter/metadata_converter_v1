@@ -7,12 +7,6 @@
 }
 
 
-
-.navbar-text {
-	color: whitesmoke;
-	color: #f99595;
-}
-
 #input {
 	background-color: #4cb4c7;
 	/* background-color: #ae57ff; */
@@ -41,7 +35,7 @@ body {
 }
 
 .home-headers {
-	color: rgb(40, 104, 160);
+	/* color: rgb(40, 104, 160); */
 	color: rgb(52, 134, 206);
 }
 
@@ -51,6 +45,10 @@ body {
 
 .orange-txt {
     color: #f99595;
+}
+
+.orange-bg {
+    background-color: #f99595;
 }
 
 .purple-txt {
@@ -63,4 +61,40 @@ body {
 
 .dk-blue-bg {
 	background-color: rgb(40, 104, 160);
+}
+
+.navbar-text {
+	color: whitesmoke;
+	color: #f99595;
+}
+
+
+.btn-secondary {
+    background: #f99595;
+	color: white;
+	border: none;
+}
+ 
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active, .open > .dropdown-toggle.btn-secondary {
+    background: rgb(40, 104, 160);
+}
+ 
+.btn-secondary:active, .btn-secondary.active {
+    background: whitesmoke;
+    box-shadow: none;
+}
+
+.btn-primary {
+    background: rgb(40, 104, 160);
+	color: white;
+	border: none;
+}
+ 
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: rgb(65, 166, 255);
+}
+ 
+.btn-primary:active, .btn-primary.active {
+    background: rgb(40, 104, 160);
+    box-shadow: none;
 }

@@ -95,7 +95,8 @@ def create_discovery_data_dict(xml_to_parse):
         'description': '',
         'genre': '',
         'rating': '',
-        'duration': ''
+        'duration': '',
+        'vendor_id': '',
     }
 
     for key in data_dict:

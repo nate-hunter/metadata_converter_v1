@@ -44,20 +44,35 @@ def create_disney_data_dict(xml_to_parse):
 
     root = etree.fromstring(xml_to_parse)
 
+    # data_dict = {
+    #     'series': '',
+    #     'series_short_synopsis': '',
+    #     'series_start_year': '',
+    #     'season': '',
+    #     'season_short_synopsis': '',
+    #     'title': '',
+    #     'episode_number': '',
+    #     'runtime': '',
+    #     'short_synopsis': '',
+    #     'genre': '',
+    #     'rating': '',
+    #     'cast': '',
+    #     'physical_release_date': ''
+    # }
+
     data_dict = {
-        'series': '',
-        'series_short_synopsis': '',
-        'series_start_year': '',
-        'season': '',
-        'season_short_synopsis': '',
-        'title': '',
-        'episode_number': '',
-        'runtime': '',
-        'short_synopsis': '',
+        'series_title': '',
+        'season_number': '',
+        'episode_title': '',
+        'episode_position': '',
+        'season_synopsis_short': '',
+        'episode_synopsis_short': '',
+        'production_year': '',
         'genre': '',
         'rating': '',
         'cast': '',
-        'physical_release_date': ''
+        'runtime': '',
+        'release_date': ''
     }
 
     for key in data_dict:

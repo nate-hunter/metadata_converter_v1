@@ -3,7 +3,7 @@ import csv
 import os
 
 
-def create_aeorig_data_dict(xml_to_parse):
+def create_ae_data_dict(xml_to_parse):
     # METADATA PROVIDED BY A&E
 
     # with open(xml_to_parse, 'rb') as f:

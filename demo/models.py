@@ -4,6 +4,7 @@ STUDIO_CHOICES = [
     ('A&E', 'A&E'),
     ('Discovery', 'Discovery'),
     ('Disney', 'Disney'),
+    ('Viacom', 'Viacom'),
 ]
 
 class Metadata(models.Model):

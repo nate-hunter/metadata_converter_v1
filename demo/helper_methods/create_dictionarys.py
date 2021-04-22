@@ -3,16 +3,18 @@ import csv
 import os
 
 
-def create_ae_data_dict(xml_to_parse):
+def create_aeorig_data_dict(xml_to_parse):
     # METADATA PROVIDED BY A&E
 
     # with open(xml_to_parse, 'rb') as f:
     #     open_xml = f.read()
-    print('\n\t--->XML', xml_to_parse)
-    print('\n\t-----')
+
+    # print('\n\t--->XML', xml_to_parse)
+    # print('\n\t-----')
 
     root = etree.fromstring(xml_to_parse)
-    print('\n\t--->', root)
+    # print('\n\t--->', root)
+
     data_dict = {
         'Series': '',
         'Season': '',
@@ -28,7 +30,7 @@ def create_ae_data_dict(xml_to_parse):
         'ReleaseYear': ''
     }
 
-    for child in root.getchildren():
+    for child in root.getchildren():        
         if not child.text == 'N/A':
             if child.tag in data_dict:
                 data_dict[child.tag] = child.text
@@ -122,3 +124,37 @@ def create_discovery_data_dict(xml_to_parse):
                 data_dict[tag] = ch.text
 
     return data_dict
+
+
+def create_viacom_data_dict(xml_to_parse):
+    """ METADATA PROVIDED BY VIACOM """
+
+    root = etree.fromstring(xml_to_parse)
+
+    data_dict_viacom = {
+        'series_name': '',
+        'season_number': '',
+        'title': '',
+        'container_position_episode': '',
+        'season_description': '',
+        'episode_short_description': '',
+        'contributor': '',
+        'rating': '',
+        'genre': '',
+        'runtime': '',
+        'original_release_year': ''
+    }
+
+    for key in data_dict_viacom:
+        for element in root.iter(key):
+            if element.tag == 'contributors':
+                list_actor = []
+                for actor in element.getchildren():
+                    actor_name = actor.get("contributor")
+                    list_actor.append(actor_name)
+
+                data_dict_viacom[element.tag] = '; '.join(list_actor)
+            else:
+                data_dict_viacom[element.tag] = element.text
+
+    return data_dict_viacom

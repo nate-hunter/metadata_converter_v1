@@ -26,4 +26,7 @@ In terminal:
 python manage.py migrate
 ```
 
-
+### Apply changes:
+git add .
+git commit -m "<description of changes>"
+git push heroku master

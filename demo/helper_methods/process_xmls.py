@@ -20,6 +20,10 @@ def handle_xml(studio, xml):
         discovery_dict = create_dictionarys.create_discovery_data_dict(xml)
         return discovery_dict
         # list_data.append(discovery_dict)
+    elif studio.lower() == 'viacom':
+        viacom_dict = create_dictionarys.create_viacom_data_dict(xml)
+        return viacom_dict
+        # list_data.append(discovery_dict)
     else:
         print("- '" + studio + "' is not set up to convert XMLs to CSV at this time.")
         # break
@@ -47,6 +51,10 @@ def process_directory(directory, studio):
                 discovery_dict = create_dictionarys.create_discovery_data_dict(file)
                 list_data.append(discovery_dict)
                 studio_name = studio.upper()
+            elif studio.lower() == 'viacom':
+                viacom_dict = create_dictionarys.create_viacom_data_dict(file)
+                list_data.append(viacom_dict)
+                studio_name = studio.upper()    
             else:
                 studio_error = "'" + studio + "' is not set up to convert XMLs to CSV at this time."
                 break    

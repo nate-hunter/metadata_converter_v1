@@ -16,7 +16,7 @@ import os
 import csv
 import io
 
-
+ 
 def home(request):
     return render(request, 'home.html', {})
 
@@ -51,6 +51,9 @@ class FileFieldView(FormView):
             for f in files:
                 xml = f.read()
                 xml_data = process_xmls.handle_xml(studio, xml)
+                # print('\n\t xml data File Field View-------')
+                # print(xml_data)
+                # print('\n\t-----')
                 list_data.append(xml_data)
 
 
@@ -112,12 +115,21 @@ class ExportFileView(FormView):
         form = self.get_form(form_class)
         files = request.FILES.getlist('xml_files')
         studio = request.POST['studio']
+        print('\n\t----STUDIO:')
+        print(studio)
+        print('------------------------')
         if form.is_valid():
             list_data = []
 
+            count = 0
             for f in files:
                 xml = f.read()
                 xml_data = process_xmls.handle_xml(studio, xml) # Returns a dictionary of the parsed XML 
+                print('\n\t xml data: ExportFileView-------')
+                print(count)
+                print(xml_data)
+                count += 1
+                print('\n\t-----')
                 list_data.append(xml_data)  # Appends the returned dictionary to a list
 
             # EXTRACT COLUMN HEADERS TO SEND TO TEMPLATE:

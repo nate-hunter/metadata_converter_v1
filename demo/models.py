@@ -4,6 +4,7 @@ STUDIO_CHOICES = [
     ('A&E', 'A&E'),
     ('Discovery', 'Discovery'),
     ('Disney', 'Disney'),
+    ('Disney2', 'Disney2'),
     ('Viacom', 'Viacom'),
 ]
 

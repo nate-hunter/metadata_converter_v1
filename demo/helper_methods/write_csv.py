@@ -16,11 +16,17 @@ def extract_columns(data):
 def extract_row_data(data):
     """ EXTRACTS ROW DATA TO USE IN THE TABLE IN THE 'HOME' TEMPLATE"""
     row_data = []
+    print('\n\t------Incoming data:')
+    print(data)
+    print('\n\t--------')
+    
 
     for row_dict in data:
         row_array = []
-
+        # count = 0
         for row in row_dict.values():
+            # print(f'row {count}:  {row}')
+            # count = count + 1
             row_array.append(row)
         
         row_data.append(row_array)

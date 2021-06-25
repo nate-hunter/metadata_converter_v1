@@ -16,6 +16,10 @@ def handle_xml(studio, xml):
         disney_dict = create_dictionarys.create_disney_data_dict(xml)
         return disney_dict
         # list_data.append(disney_dict)
+    elif studio.lower() == "disney2":
+        disney_dict = create_dictionarys.create_disney2_data_dict(xml)
+        return disney_dict
+        # list_data.append(disney_dict)
     elif studio.lower() == 'discovery':
         discovery_dict = create_dictionarys.create_discovery_data_dict(xml)
         return discovery_dict
@@ -45,6 +49,10 @@ def process_directory(directory, studio):
                 studio_name = studio.upper()
             elif studio.lower() == "disney":
                 disney_dict = create_dictionarys.create_disney_data_dict(file)
+                list_data.append(disney_dict)
+                studio_name = studio.upper()
+            elif studio.lower() == "disney2":
+                disney_dict = create_dictionarys.create_disney2_data_dict(file)
                 list_data.append(disney_dict)
                 studio_name = studio.upper()
             elif studio.lower() == 'discovery':

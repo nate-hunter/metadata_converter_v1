@@ -46,6 +46,59 @@ def create_disney_data_dict(xml_to_parse):
 
     root = etree.fromstring(xml_to_parse)
 
+    data_dict = {
+        'series': '',
+        'series_short_synopsis': '',
+        'series_start_year': '',
+        'season': '',
+        'season_short_synopsis': '',
+        'title': '',
+        'episode_number': '',
+        'runtime': '',
+        'short_synopsis': '',
+        'genre': '',
+        'rating': '',
+        'cast': '',
+        'physical_release_date': ''
+    }
+
+    # data_dict = {
+    #     'series_title': '',
+    #     'season_number': '',
+    #     'episode_title': '',
+    #     'episode_position': '',
+    #     'season_synopsis_short': '',
+    #     'episode_synopsis_short': '',
+    #     'production_year': '',
+    #     'genre': '',
+    #     'rating': '',
+    #     'cast': '',
+    #     'runtime': '',
+    #     'release_date': ''
+    # }
+
+    for key in data_dict:
+        for element in root.iter(key):
+            if element.tag == 'cast':
+                list_actor = []
+                for actor in element.getchildren():
+                    actor_name = actor.get("name")
+                    list_actor.append(actor_name)
+
+                data_dict[element.tag] = '; '.join(list_actor)
+            else:
+                data_dict[element.tag] = element.text
+
+    return data_dict
+
+def create_disney2_data_dict(xml_to_parse):
+    # METADATA PROVIDED BY DISNEY
+
+    # with open(xml_to_parse, 'rb') as f:
+    #     open_xml = f.read()
+
+    root = etree.fromstring(xml_to_parse)
+
     # data_dict = {
     #     'series': '',
     #     'series_short_synopsis': '',
@@ -88,7 +141,6 @@ def create_disney_data_dict(xml_to_parse):
                 data_dict[element.tag] = '; '.join(list_actor)
             else:
                 data_dict[element.tag] = element.text
-
     return data_dict
 
 
